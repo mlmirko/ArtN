@@ -25,13 +25,15 @@ def get_openai_response(messages):
     return completion.choices[0].message.content.strip()
 
 # Streamlit app layout
-st.title("Temporary Tattoo Idea Generator")
-st.write("This chatbot will help you find the perfect temporary tattoo idea. Let's get started!")
+st.title("Tattoo Idea Generator")
+st.write("This chatbot will help you find the perfect tattoo idea. Let's get started!")
 
 # Initialize session state for conversation
 if 'conversation' not in st.session_state:
     st.session_state.conversation = [
-        {"role": "system", "content": "You are a helpful assistant that helps users come up with temporary tattoo ideas. You need to ask user short but direct questions to help him/her decide which tattoo they want."}
+        {"role": "system", "content": """You are a helpful assistant that helps users come up with tattoo ideas. You need to ask user short but direct questions to help him/her decide which tattoo they want. The tattoo can be permament or temporary so you must ask user about that.
+                                        If user wants a permanent tattoo, ask about his preferences and if he has any ideas in mind, the story behind the tatto or if he/she doesn't have an idea, ask about his/her interests, hobbies, favorite colors, events that marked their lifes etc.
+                                        If user wants a temporary tattoo, ask about the event where he/she wants to wear it, the colors, the size, the style, the message he/she wants to transmit etc. If there is an event for the tattoo, ask about the event, the colors, the style, the message he/she wants to transmit etc."""}
     ]
 
 # Initialize session state for stopping the conversation
